@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Ubuntu:wght@300&display=swap');
+
+/* Colour and Font Variables */
+:root {
+--white: #ffffff;
+--midiumwhite: #fffafa;
+--darkwhite: rgba(245, 245, 245, 0.953);
+--black: #070707;
+--lightblack: #2e2e2e;
+--darkgrey: #515151;
+--lightgrey: #a3a3a3;
+--coral: #ff4242;
+--lightcoral: #ff5249e6;
+--yellow: #fab700;
+--darkyellow: #c89200;
+--red: #ee0909;
+--lightred: #ff2b24;
+--green: #0f860f;
+--lighgreen: #16bd16;
+--primaryfont: "Open Sans", sans-serif;
+--secondaryfont: "Ubuntu", sans-serif;
+}
+
+/*/////////////////////////////////////////
+//////////////// GLOBAL SETTINGS ///////////*/
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    /*1rem = 10px, 10px/16px = 62.5%*/
+    font-size: 62.5%; 
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    color: var(--lightblack);
+    background-color: var(--white);
+    font-family: var(--primaryfont);
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+main {
+    flex: 1 0 auto;
+    margin-top: 5.7rem;
+}
+
+/*/////////////////////////////////////////
+//////////////// HELPERS - UTILITIES ///////////*/
+.uppercase {
+    text-transform: uppercase;
+}
+
+.margin-top-large {
+    margin-top: 5rem;
+}
+
+.margin-top-med {
+    margin-top: 3rem;
+}
+
+.margin-top-small {
+    margin-top: 1rem;
+}
+
+.margin-bottom-small {
+    margin-bottom: 1rem;
+}
+
+.margin-bottom-large {
+    margin-bottom: 2rem; 
+}
+
+.text-red {
+    color: var(--red);
+}
+
+.text-black {
+    color: var(--lightblack);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.text-shadow-small {
+    text-shadow: 1px 1px 1px var(--black);   
+}
+
+.small-text-delete {
+    font-size: 1.1rem;
+}
+
+/* override Materialize label color and dropdown colour */
+.input-field label {
+    color: var(--black);
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+    color:  var(--black);
+    font-size: 1.1rem;
+}
+
+/*/////////////////////////////////////////
+//////////////// MESSAGES ///////////*/
+.flashes {
+    text-align: center;
+    color: var(--lightcoral);
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.toast-message {
+    margin-left: .1rem;
+    font-size: inherit;
+}
+
+/*/////////////////////////////////////////
+//////////////// HEADINGS ///////////*/
+.primary-heading {
+    font-size: 3.1rem;
+    letter-spacing: .8rem; 
+    font-family: var(--secondaryfont);
+}
+
+.secondary-heading {
+    font-size: 2.4rem;
+    letter-spacing: 0.2rem; 
+    color: var(--coral);
+    font-weight: 600;
+}
+
+.tertiary-heading {
+    font-size: 1.7rem;
+    color: var(--coral);
+}
+
+.sub-heading { 
+    font-size: 1.9rem;
+    font-weight: 500;
+}
+
+.heading-black {
+    color: var(--lightblack);
+    margin: 2rem;
+    padding-bottom: 1rem;
+    text-shadow: 1px 1px 1px var(--lightgrey);
+}
+
+/*/////////////// NAVBAR///////////*/
+/* fixed on the top; slide out menu on mobile*/
+nav {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background-color: var(--darkwhite);
+    font-family: var(--primaryfont);
+}
+
+nav .brand-logo{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+nav img {
+    height: 5.5rem;
+}
+
+nav ul a {
+    color: var(--lightblack);
+    padding: 0 2rem;
+    font-family: var(--secondaryfont);
+    margin-right: 5px;
+    font-weight: 400;
+}
+
+.navbar-icon {
+    margin-right: 0.8rem;
+    font-size: 1.5rem;
+    color: var(--lightblack);
+}
+
+.brand-logo {
+    color: var(--darkgrey);
+}
+
+.small-nav-icon {
+    font-size: 1rem;
+}
+
+.mobile-navbar-heading {
+    font-size: 2.6rem;
+    text-shadow: 1px 1px 6px var(--darkwhite);
+    color: var(--coral);
+}
+
+
+/*/////////////////////////////////////////
+//////////////// HOME PAGE ///////////*/
+.home-container {
+    margin: 0 auto;
+    width: 100%;
+    height: 60vh;
+    display:flex;
+    margin-top: 2rem;
+}
+
+/*Radial gradient on the image is used for making the text more readable and outstanding*/
+.hero-image {
+    background-image: radial-gradient(rgba(249, 238, 238, 0.91),
+                     rgba(152, 142, 142, 0.04)),
+                      url(../img/2bg-home.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 1.5rem;
+    width: 100%;
+}
+
+.text-block-home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--lightblack);
+    width: inherit;
+    padding: 0 .5rem;
+    
+}
+
+.home-paragpaph {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+}
+
+.container-subheading {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
+/*/////////////////////////////////////////
+//////////////// RECIPE CARD ///////////*/
+.card-recipe,
+.card-image,
+.recipe-image,
+.card .card-image img  {
+    border-radius: 2.5rem;
+}
+
+.card {
+    transition: transform .2s;
+}
+
+.card:hover {
+    transform: translateY(-.5rem) scale(1.01);
+}
+
+.card .card-image img {
+    width: 100%;
+    height: 45vh;
+    display: block;
+    object-fit: cover;
+}
+
+.text-block {
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    background-color: var(--yellow);
+    font-family:var(--secondaryfont);
+    font-size: 1.2rem;
+    padding: 0 5px;
+    opacity: 0.9;
+    border-radius: .4rem;
+}
+
+.card-bottom-info {
+    font-size: 1.2rem;
+    margin-top: .4rem;
+    margin-bottom: 0;
+}
+
+.icon-recipe-card {
+    color: var(--yellow);   
+    font-size: 1.3rem;
+    padding: 2px;
+}
+
+.card .card-content{
+    padding-top: 0;
+    margin-top: -1rem;
+}
+
+.card .card-title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--black);
+}
+
+/*/////////////////////////////////////////
+//////////////// FOOTER ///////////*/
+.footer-container {
+    background-color: var(--darkwhite);
+    padding-bottom: 0.5rem;
+    color: var(--lightblack);
+    -webkit-box-shadow: 0px -5px 10px -6px var(--lightblack);
+    -moz-box-shadow: 0px -5px 10px -6px var(--lightblack);
+    box-shadow: 0px -5px 10px -6px var(--lightblack);
+}
+
+/*Smooth transition on hover makes icons larger*/
+.media-icons {
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: .3rem;
+    padding: 3px;
+    font-weight: 300;
+    text-shadow: 2px 2px 2px var(--lightgrey);
+    --webkit-transition-duration: 0.5s;
+    --moz-transition-duration: 0.5s;
+    --o-transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.media-icons:hover {
+    --webkit-transform: scale(1.3);
+    --moz-transform: scale(1.3);
+    --o-transform: scale(1.3);
+}
+
+.disclamer-text {
+    font-size: 1rem;
+}
