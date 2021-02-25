@@ -1,9 +1,10 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 <div class="log-reg-container">
     <section class="login-reg-section center-align margin-top-large">
         <a href="{{ url_for('home') }}">
             <img src="#" class="logo-login-register hide-on-med-and-down"
-                alt="My CookBook Logo" />
+                alt=" Logo" >
         </a>
         <h1 class="secondary-heading heading-black uppercase">Create account</h1>
         <div class="row">
@@ -12,7 +13,7 @@
                 <!--Username-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="material-icons prefix">person</i>
+                        <i class="fas fa-user prefix"></i>
                         {{ form.username(placeholder="Enter username", id="username") }}
                         <label for="username">Username <i class="fas fa-question-circle tooltipped" data-position="top"
                                 data-tooltip="3-15 characters, case sensitive"></i></label>
@@ -24,7 +25,7 @@
                 <!--Password-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="material-icons prefix">lock</i>
+                        <i class="fas fa-lock prefix"></i>
                         {{ form.password (placeholder="Enter password", id="password") }}
                         <label for="password">Password <i class="fas fa-question-circle tooltipped" data-position="top"
                                 data-tooltip="3-15 characters, case sensitive"></i></label>
@@ -36,7 +37,7 @@
                 <!--Confirm Password-->
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="material-icons prefix">lock</i>
+                        <i class="fas fa-lock prefix"></i>
                         {{ form.confirm_password.label }}
                         {{ form.confirm_password(placeholder="Confirm password") }}
                         {% for error in form.confirm_password.errors %}
