@@ -1,0 +1,85 @@
+{% extends 'base.html' %} {% block content %}
+<div class="margin-top-large">
+    <h1 class="secondary-heading uppercase center-align margin-bottom-large"><span class="text-black">All </span>Recipes
+        ({{ number_of_all_rec }})</h1>
+</div>
+
+<div class="divider-container hide-on-small-only">
+    <hr class="divider-yellow" />
+</div>
+
+<!--Search-->
+<div class="search-container">
+    <form action="{{ url_for('search', query=query, current_page=current_page) }}" class="search">
+        <input type="text" class="search-input" id="query" name="query" placeholder="Search resipes...">
+        <button class="search-button">
+            <i class="fas fa-search search-icon"></i>
+        </button>
+    </form>
+</div>
+
+<div class="container-recipes">
+    <div class="row">
+        {% for recipe in recipes %}
+        <div class="col s12 m6 l3">
+            <div class="card hoverable card-recipe">
+                <div class="card-image">
+                    <a href="{{ url_for('single_recipe_details', recipe_id=recipe._id) }}">
+                        <!--If recipe image is assigned, recipe placeholder is displayd-->
+                        {% if recipe.image %}
+                        <img src="{{ recipe.image }}" class="responsive-img" alt="Recipe Image" />
+                        {% else %}
+                        <img src="{{ url_for('static', filename='img/recipe_placeholder.jpg') }}" class="responsive-img"
+                            alt="No recipe image available" />
+                        {% endif %}
+                    </a>
+                    <!--Cuisine type displayed only if it was selected by user-->
+                    {% if recipe.cuisine_type=="None" %}
+                    {% else %}
+                    <div class="text-block">
+                        <p>{{ recipe.cuisine_type }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="card-content">
+                    <h3>
+                        <a href="{{ url_for('single_recipe_details', recipe_id=recipe._id) }}"
+                            class="card-title">{{ recipe.recipe_name }}
+                        </a>
+                    </h3>
+                    <div class="divider"></div>
+                    <div class="row card-bottom-info">
+                        <div class="col s4 uppercase card_meal_heading">
+                            {{ recipe.meal_type }}
+                        </div>
+                        <div class="col s8 right-align">
+                            <span title="Cooking time">
+                                <i class="far fa-clock icon-recipe-card" aria-hidden="true"></i>
+                                {{ recipe.cooking_time }} min|
+                            </span>
+                            <span title="Servings">
+                                <i class="fas fa-user icon-recipe-card" aria-hidden="true"></i>
+                                {{ recipe.servings }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--Pagination-->
+    <ul class="pagination center-align margin-bottom-large">
+        {% for page_num in pages %}
+        {% if page_num == current_page %}
+        <li class="active"><a>{{ page_num }}</a></li>
+        {% else %}
+        <li class="waves-effect">
+            <a href="{{ url_for('all_recipes', current_page=page_num) }}">{{ page_num }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

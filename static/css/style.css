@@ -301,6 +301,198 @@ nav ul a {
     color: #070707;
 }
 /*/////////////////////////////////////////
+/////////////ALL RECIPES PAGE ///////////*/
+.container-recipes{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.pagination li {
+    height: auto !important;
+}
+
+
+/*/////////////////////////////////////////
+//////////////// SEARCH ///////////*/
+.search-container {
+    width: 90%;
+    margin: 2rem auto;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Overriding the Materialize default styling:
+input[type=text]:not(.browser-default), */
+.search-input {
+    font-family: inherit !important;
+    font-size: 1.3rem !important;
+    color: inherit !important;
+    background-color: #f7f7f7 !important;
+    border: none !important;
+    padding: .7rem 2rem !important;
+    border-radius: 10rem !important;
+    width: 85% !important;
+    transition: all .2s !important;
+    margin-right: -3.25rem !important;
+
+}
+
+/* Overriding the Materialize default styling:
+input[type=text]:not(.browser-default):focus:not([readonly]), */
+.search-input:focus{
+    outline: none !important;
+    width: 87% !important;
+    background-color: #f7f7f7 !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.search-input::-webkit-input-placeholder{
+    font-weight: 100 !important;
+    color: var(--lightgrey) !important;
+}
+
+.search-button {
+    border: none;
+    background-color: #f7f7f7;
+    cursor: pointer;
+}
+
+.search-button:focus{
+    outline: none; 
+    background-color: #f7f7f7 !important;
+}
+
+.search-button:active{
+    transform: translateY(2px); 
+}
+
+.search-icon {
+    height: 2rem;
+    width: 2rem;
+}
+
+.search-img-container {
+    position: relative;
+}
+
+.img-search {
+    width: 100%;
+    object-fit: cover;
+}
+
+.search-img-title {
+    background-color: rgba(94, 94, 94, 0.411);
+    color: var(--white);
+    border-radius: .5rem;
+    font-size: 3.3rem;
+    padding: 1rem;
+    position: absolute;
+    bottom: .5rem;
+    left: 1.5rem;
+}
+
+.search-results {
+    padding: .5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*/////////////////////////////////////////
+//////////////// MY RECIPIES PAGE ///////////*/
+.paragraph-count {
+    font-family: var(--secondaryfont);
+}
+/*/////////////////////////////////////////
+//////////////// MY RECIPIES PAGE ///////////*/
+.paragraph-count {
+    font-family: var(--secondaryfont);
+}
+
+/*/////////////////////////////////////////
+//////////////// RECIPE DETAILS PAGE ///////////*/
+.divider-container {
+    display: flex;
+    justify-content: center;
+    margin: 3.5rem auto;
+}
+
+.divider-yellow {
+    background-color: var(--darkyellow);
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    width: 15rem;
+    height: 2px;
+    border-radius: 5px;
+    border: 1px solid var(--darkyellow);
+}
+
+.recipe-lead-text {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--black);
+    padding-right: .3rem;
+}
+
+.paragraph-recipe {
+    margin: 0;
+}
+
+.recipe-description-paragraph {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.recipe_icon {
+    font-size: 2.3rem;
+    color: var(--darkyellow);
+    text-shadow: 2px 2px 2px var(--darkgrey);
+}
+
+.list-items {
+    padding: 1rem;
+}
+
+.ingredients-list {
+    display: flex;
+    align-items: center;
+}
+
+.ingredient-icon {
+    font-size: 1rem;
+    margin-right: .8rem;
+    color: var(--coral);
+}
+
+.image-and-buttons-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container {
+    margin: 0 auto;
+}
+
+.recipe-image {
+    min-height: 30vh;
+    object-fit: cover;
+    display: block;
+}
+
+.buttons-container{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+}
+/*/////////////////////////////////////////
 //////////////// LOGIN - REGISTER PAGES ///////////*/
 .log-reg-container {
     display: flex;
@@ -317,6 +509,23 @@ nav ul a {
 
 .logo-login-register {
     width: 10rem;
+}
+/*/////////////////////////////////////////
+//////////////// ADD/EDIT PAGE ///////////*/
+.container-addrecipe {
+    padding: 3px;
+    border-radius: 2rem;
+    margin-bottom: 2.2rem;
+    width: 99%;
+}
+
+.add-edit-form {
+    padding: 2px;
+}
+
+.asterisk {
+    color: var(--red);
+    font-size: .7rem;
 }
 /*///////////////////////////////////////////
 ///////////ACCOUNT SETTINGS PAGE/////////////*/

@@ -12,8 +12,7 @@
     {% endfor %}
     {% endif %}
     {% endwith %}
-</div>}
-
+</div>
 <!--Main section, hero image and button-->
 <div class="home-container">
     <div class="hero-image">
@@ -23,7 +22,7 @@
                 Easy way to view, create and store
                 your favourite recipes
             </p>
-            <a href="#" class="waves-effect waves-light btn btn-coral uppercase z-depth-3 btn-main" id="btn-home">
+            <a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn btn-coral uppercase z-depth-3 btn-main" id="btn-home">
                 Browse our recipes
             </a>
         </div>
@@ -34,59 +33,58 @@
     <h2 class="sub-heading center-align"> Featured recipes </h2>
     <div class="divider"></div>
 </div>
-
-<!--Display 4 random recipes from the database-->
 <div class="container-recipes">
     <div class="row">
         {% for recipe in featured_recipes %}
-    <!--Recipe card-->
-<div class="col s12 m6 l3">
-  <div class="card hoverable card-recipe">
-    <div class="card-image">
-        <a href="#"> 
-        <!--If recipe image is assigned, recipe placeholder is displayd-->
-        {% if recipe.image %}
-        <img src="{{ recipe.image }}" class="responsive-img" alt="Recipe Image" />
-        {% else %}
-        <img src="{{ url_for('static', filename='img/recipe_placeholder.jfif') }}" class="responsive-img"
-            alt="No recipe image available" />
-        {% endif %}
-        </a>
-        <!--Cuisine type displayed only if it was selected by user-->
-        {% if recipe.cuisine_type=="None" %}
-        {% else %}
-        <div class="text-block">
-            <p>{{ recipe.cuisine_type }}</p>
-        </div>
-        {% endif %}
-    </div>
+        <div class="col s12 m6 l3">
+            <div class="card hoverable card-recipe">
+                <div class="card-image">
+                    <a href="#">
+                        <!--If recipe image is assigned, recipe placeholder is displayd-->
+                        {% if recipe.image %}
+                        <img src="{{ recipe.image }}" class="responsive-img" alt="Recipe Image" />
+                        {% else %}
+                        <img src="{{ url_for('static', filename='img/recipe_placeholder.jfif') }}" class="responsive-img"
+                            alt="No recipe image available" />
+                        {% endif %}
+                    </a>
+                    <!--Cuisine type displayed only if it was selected by user-->
+                    {% if recipe.cuisine_type=="None" %}
+                    {% else %}
+                    <div class="text-block">
+                        <p>{{ recipe.cuisine_type }}</p>
+                    </div>
+                    {% endif %}
+                </div>
 
-    <div class="card-content">
-        <h3>
-            <a href="#"
-                class="card-title">{{ recipe.recipe_name }}
-            </a>
-        </h3>
-        <div class="divider"></div>
-        <div class="row card-bottom-info">
-            <div class="col s4 uppercase card_meal_heading">
-                {{ recipe.meal_type }}
-            </div>
-            <div class="col s8 right-align">
-                <span title="Cooking time">
-                    <i class="far fa-clock icon-recipe-card" aria-hidden="true"></i>
-                    {{ recipe.cooking_time }} min|
-                </span>
-                <span title="Servings">
-                    <i class="fas fa-user icon-recipe-card" aria-hidden="true"></i>
-                    {{ recipe.servings }}
-                </span>
+                <div class="card-content">
+                    <h3>
+                        <a href="#"
+                            class="card-title">{{ recipe.recipe_name }}
+                        </a>
+                    </h3>
+                    <div class="divider"></div>
+                    <div class="row card-bottom-info">
+                        <div class="col s4 uppercase card_meal_heading">
+                            {{ recipe.meal_type }}
+                        </div>
+                        <div class="col s8 right-align">
+                            <span title="Cooking time">
+                                <i class="far fa-clock icon-recipe-card" aria-hidden="true"></i>
+                                {{ recipe.cooking_time }} min|
+                            </span>
+                            <span title="Servings">
+                                <i class="fas fa-user icon-recipe-card" aria-hidden="true"></i>
+                                {{ recipe.servings }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
-</div>}
-{% endfor %}
-</div>
-</div>
+
+
 {% endblock %}

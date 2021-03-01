@@ -20,28 +20,30 @@
         href="{{ url_for('static', filename='css/background_forms.css') }}">
     {% endif %}
     
-    
     <title>Online Recipes</title>
+    <!--Favicon from stack overflow-->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.jfif') }}" 
+    type="image/x-icon" sizes="100x100">
 </head>
 
 <body>
     <header>
         <ul id="account" class="dropdown-content center-align">
             <li>
-                <a href="#">
+                <a href="{{ url_for('my_recipes',username = session.username) }}">
                     <i class="fas fa-user small-nav-icon" aria-hidden="true"></i>
                     My Recipes
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ url_for('add_recipe') }}">
                     <i class="fas fa-plus-circle small-nav-icon" aria-hidden="true"></i>
                     Add Recipe
                 </a>
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#">
+                <a href="{{url_for('account_settings', username = session.username)}}">
                     <i class="fas fa-cog small-nav-icon" aria-hidden="true"></i>
                     Settings
                 </a>
@@ -51,7 +53,7 @@
         <nav>
             <div class="nav-wrapper">
                 <a href="{{ url_for('home') }}" class="brand-logo">
-                    <img src="#" alt=" Logo">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt=" Logo">
                 </a>
                 <!--The burger-icon button to get the navbar opened in mobile/tablet devices-->
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
@@ -66,7 +68,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="uppercase">
+                        <a href="{{url_for('all_recipes')}}" class="uppercase">
                             <i class="fas fa-utensils navbar-icon" aria-hidden="true"></i>
                             Browse Recipes
                         </a>
@@ -80,7 +82,7 @@
                             href="{{ url_for('account_settings', username = session.username) }}" data-target="account">
                             <i class="fas fa-user-circle navbar-icon" aria-hidden="true"></i>
                             account
-                            <i class="material-icons right" aria-hidden="true">Down</i>
+                            <i class="fas fa-caret-down right" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li>
@@ -119,27 +121,27 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="uppercase">
+                <a href="{{url_for('all_recipes')}}" class="uppercase">
                     <i class="fas fa-utensils" aria-hidden="true"></i>
                     Browse Recipes
                 </a>
             </li>
             {% if session.username %}
             <li>
-                <a href="#" class="uppercase">
+                <a href="{{ url_for('my_recipes',username = session.username) }}" class="uppercase">
                     <i class="fas fa-user" aria-hidden="true"></i>
                     My Recipes
                 </a>
             </li>
             <li>
-                <a href="#" class="uppercase">
+                <a href="{{ url_for('add_recipe') }}" class="uppercase">
                     <i class="fas fa-plus-circle" aria-hidden="true"></i>
                     Add Recipe
                 </a>
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#" class="uppercase">
+                <a href="{{url_for('account_settings', username = session.username)}}" class="uppercase">
                     <i class="fas fa-cog" aria-hidden="true"></i>
                     Settings
                 </a>

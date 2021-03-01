@@ -21,3 +21,19 @@ class LoginForm(FlaskForm):
                            validators=[DataRequired(), Length(min=3, max=15)])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
+
+
+class Add_RecipeForm(FlaskForm):
+    recipe_name = StringField('Recipe Name',
+                              validators=[DataRequired()])
+    recipe_description = TextAreaField('Recipe Description',
+                                       validators=[DataRequired()])
+    cooking_time = IntegerField('Cooking Time (minutes)',
+                                validators=[DataRequired()])
+    servings = IntegerField('Number of Servings', validators=[DataRequired()])
+    image = StringField('Recipe Image', validators=[Optional()])
+    ingredients = TextAreaField('Ingredients',
+                                validators=[DataRequired()])
+    recipe_directions = TextAreaField('Directions',
+                                      validators=[DataRequired()])
+    submit = SubmitField('Add Recipe')
