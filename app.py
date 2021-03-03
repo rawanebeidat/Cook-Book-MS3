@@ -29,8 +29,8 @@ meals_coll = mongo.db.meals
 
 
 @app.route('/')
-@app.route("/home")
-def home():
+@app.route("/index")
+def index():
     '''
     Main home page.
     Allows users to view 4 random featured recipes
@@ -39,8 +39,8 @@ def home():
     # Generate 4 random recipes from the DB
     featured_recipes = ([recipe for recipe in recipes_coll.aggregate
                          ([{"$sample": {"size": 4}}])])
-    return render_template('home.html', featured_recipes=featured_recipes,
-                           title='Home')
+    return render_template('index.html', featured_recipes=featured_recipes,
+                           title='index')
 
 
 # All recipes display
@@ -134,7 +134,7 @@ def add_recipe():
     # prevents guest users from viewing the form
     if 'username' not in session:
         flash('You must be logged in to add a new recipe!')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     # form variable to initialise the form
     form = Add_RecipeForm()
     # variables to fill dropdownes with data from collections
@@ -198,7 +198,7 @@ def edit_recipe(recipe_id):
     # prevents guest users from viewing the form
     if 'username' not in session:
         flash('You must be logged in to edit a recipe!')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     user_in_session = users_coll.find_one({'username': session['username']})
     # get the selected recipe for filling the fields
     selected_recipe = recipes_coll.find_one({"_id": ObjectId(recipe_id)})
@@ -216,7 +216,7 @@ def edit_recipe(recipe_id):
                                meal_types=meal_types, title='Edit Recipe')
     else:
         flash("You can only edit your own recipes!")
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
 
 
 # Update Recipe in the Database
@@ -264,7 +264,7 @@ def delete_recipe(recipe_id):
     # prevents guest users from viewing the modal
     if 'username' not in session:
         flash('You must be logged in to delete a recipe!')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     user_in_session = users_coll.find_one({'username': session['username']})
     # get the selected recipe for filling the fields
     selected_recipe = recipes_coll.find_one({"_id": ObjectId(recipe_id)})
@@ -278,10 +278,10 @@ def delete_recipe(recipe_id):
         users_coll.update_one({"_id": ObjectId(author)},
                               {"$pull": {"user_recipes": ObjectId(recipe_id)}})
         flash('Your recipe has been deleted.')
-        return redirect(url_for("home"))
+        return redirect(url_for("index"))
     else:
         flash("You can only delete your own recipes!")
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
 
 
 # Login
@@ -295,7 +295,7 @@ def login():
     # Check if the user is already logged in
     if 'username' in session:
         flash('You are already logged in!')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         # Variable for users collection
@@ -310,7 +310,7 @@ def login():
                 # Add user to session if passwords match
                 session['username'] = request.form['username']
                 flash('You have been successfully logged in!')
-                return redirect(url_for('home'))
+                return redirect(url_for('index'))
             else:
                 # if user entered incorrect password
                 flash("Incorrect username or password. Please try again")
@@ -333,7 +333,7 @@ def register():
     # checks if user is not already logged in
     if 'username' in session:
         flash('You are already registered!')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
 
     form = RegisterForm()
     if form.validate_on_submit():
@@ -357,7 +357,7 @@ def register():
             # add new user to the session
             session["username"] = request.form['username']
             flash('Your account has been successfully created.')
-            return redirect(url_for('home'))
+            return redirect(url_for('index'))
     return render_template('register.html', form=form,  title='Register')
 
 
@@ -368,7 +368,7 @@ def logout():
     Logs user out and redirects to home
     '''
     session.pop("username",  None)
-    return redirect(url_for("home"))
+    return redirect(url_for("index"))
 
 
 # Account Settings
@@ -412,7 +412,7 @@ def delete_account(username):
         flash("Your account has been deleted.")
         session.pop("username", None)
         users_coll.remove({"_id": user.get("_id")})
-        return redirect(url_for("home"))
+        return redirect(url_for("index"))
     else:
         flash("Password is incorrect! Please try again")
         return redirect(url_for("account_settings", username=username))

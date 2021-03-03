@@ -52,8 +52,8 @@
 
         <nav>
             <div class="nav-wrapper">
-                <a href="{{ url_for('home') }}" class="brand-logo">
-                    <img src="{{ url_for('static', filename='img/10.png') }}" alt=" Logo">
+                <a href="{{ url_for('index') }}" class="brand-logo">
+                    <img src="{{ url_for('static', filename='img/100.png') }}" alt=" Logo">
                 </a>
                 <!--The burger-icon button to get the navbar opened in mobile/tablet devices-->
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
@@ -62,7 +62,7 @@
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
-                        <a href="{{url_for('home')}}" class="uppercase">
+                        <a href="{{url_for('index')}}" class="uppercase">
                             <i class="fas fa-home navbar-icon" aria-hidden="true"></i>
                             Home
                         </a>
@@ -115,7 +115,7 @@
                 <h1 class="center-align mobile-navbar-heading">Favourite Recipes</h1>
             </li>
             <li>
-                <a href="{{url_for('home')}}" class="uppercase">
+                <a href="{{url_for('index')}}" class="uppercase">
                     <i class="fas fa-home" aria-hidden="true"></i>
                     Home
                 </a>
