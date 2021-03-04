@@ -1,25 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap");
 
-/* Colour and Font Variables */
-:root {
---white: #ffffff;
---midiumwhite: #fffafa;
---darkwhite: rgba(245, 245, 245, 0.953);
---black: #070707;
---lightblack: #2e2e2e;
---darkgrey: #515151;
---lightgrey: #a3a3a3;
---coral: #ff4242;
---lightcoral: #ff5249e6;
---yellow: #fab700;
---darkyellow: #c89200;
---red: #ee0909;
---lightred: #ff2b24;
---green: #0f860f;
---lighgreen: #16bd16;
---primaryfont: "Open Sans", sans-serif;
---secondaryfont: "Ubuntu", sans-serif;
-}
 /* GLOBAL SETTINGS */
 html {
     box-sizing: border-box;
@@ -353,7 +333,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]), */
 
 .search-input::-webkit-input-placeholder{
     font-weight: 100 !important;
-    color: var(--lightgrey) !important;
+    color: #a3a3a3 !important;
 }
 
 .search-button {
@@ -387,7 +367,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]), */
 
 .search-img-title {
     background-color: rgba(94, 94, 94, 0.411);
-    color: var(--white);
+    color: #ffffff;
     border-radius: .5rem;
     font-size: 3.3rem;
     padding: 1rem;
@@ -408,12 +388,12 @@ input[type=text]:not(.browser-default):focus:not([readonly]), */
 /*/////////////////////////////////////////
 //////////////// MY RECIPIES PAGE ///////////*/
 .paragraph-count {
-    font-family: var(--secondaryfont);
+    font-family: "Ubuntu", sans-serif;;
 }
 /*/////////////////////////////////////////
 //////////////// MY RECIPIES PAGE ///////////*/
 .paragraph-count {
-    font-family: var(--secondaryfont);
+    font-family: "Ubuntu", sans-serif;;
 }
 
 /*/////////////////////////////////////////
@@ -425,20 +405,20 @@ input[type=text]:not(.browser-default):focus:not([readonly]), */
 }
 
 .divider-yellow {
-    background-color: var(--darkyellow);
+    background-color: #c89200;
     margin-top: -2rem;
     margin-bottom: 2rem;
     width: 15rem;
     height: 2px;
     border-radius: 5px;
-    border: 1px solid var(--darkyellow);
+    border: 1px solid #c89200;
 }
 
 .recipe-lead-text {
     display: inline-block;
     font-weight: 600;
     font-size: 1.3rem;
-    color: var(--black);
+    color: #070707;
     padding-right: .3rem;
 }
 
@@ -453,8 +433,8 @@ input[type=text]:not(.browser-default):focus:not([readonly]), */
 
 .recipe_icon {
     font-size: 2.3rem;
-    color: var(--darkyellow);
-    text-shadow: 2px 2px 2px var(--darkgrey);
+    color: #c89200;
+    text-shadow: 2px 2px 2px #515151;
 }
 
 .list-items {
@@ -469,7 +449,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]), */
 .ingredient-icon {
     font-size: 1rem;
     margin-right: .8rem;
-    color: var(--coral);
+    color: #ff4242;
 }
 
 .image-and-buttons-container{
@@ -524,7 +504,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]), */
 }
 
 .asterisk {
-    color: var(--red);
+    color: #ee0909;
     font-size: .7rem;
 }
 /*///////////////////////////////////////////
@@ -540,20 +520,20 @@ input[type=text]:not(.browser-default):focus:not([readonly]), */
 .btn-main:link,
 .btn-main:visited{
     border-radius: 10rem;
-    font-family: var(--secondaryfont);
+    font-family: "Ubuntu", sans-serif;;
     padding: .3rem 1.4rem;
     height: auto;
 }
 
 .btn-coral {
-    background-color: var(--coral);
-    color: var(--white);
+    background-color: #ff4242;
+    color: #ffffff;
 }
 
 .btn-coral:hover,
 .btn-coral:active,
 .btn-coral:focus {
-    background-color: var(--lightcoral);
+    background-color: #ff5249e6;
 }
 
 .btn-form {
@@ -563,58 +543,58 @@ input[type=text]:not(.browser-default):focus:not([readonly]), */
 }
 
 .btn-secondary {
-    color: var(--black);
-    background-color: var(--darkwhite);
+    color: #070707;
+    background-color: rgba(245, 245, 245, 0.953);
 }
 
 .btn-secondary:hover,
 .btn-secondary:focus,
 .btn-secondary:active {
-    background-color: var(--midiumwhite);
+    background-color: #fffafa;
 }
 
 .btn-red {
-    background-color: var(--red);
+    background-color: #ee0909;
     margin: 5px;
 }
 
 .btn-red:hover,
 .btn-red:active,
 .btn-red:focus {
-    background-color: var(--lightred);
+    background-color: #ff2b24;
 }
 
 .btn-green {
-    background-color: var(--green);
+    background-color: #0f860f;
     margin: 5px;
 }
 
 .btn-green:hover,
 .btn-green:active,
 .btn-green:focus {
-    background-color: var(--lighgreen);
+    background-color: #16bd16;
 }
 
 .btn-coral-2 {
-    background-color: var(--coral);
-    text-shadow: 0 1px 3px var(--lightblack);
+    background-color: #ff4242;
+    text-shadow: 0 1px 3px #2e2e2e;
 }
 
 .btn-coral-2:hover,
 .btn-coral-2:active,
 .btn-coral-2:focus {
-    background-color: var(--lightcoral);
+    background-color: #ff5249e6;
 }
 
 .btn-golden {
-    background-color: var(--darkyellow);
+    background-color: #c89200;
     margin: 5px;
 }
 
 .btn-golden:hover,
 .btn-golden:active,
 .btn-golden:focus {
-    background-color: var(--yellow);
+    background-color: #fab700;
 }
 
 .btn-change {
@@ -656,16 +636,9 @@ input[type=text]:not(.browser-default):focus:not([readonly]), */
 }
 /*/////////////////////////////////////////
 //////////////// MEDIA QUERIES ///////////*/
-/* 
-Media Queries are declared in em:
-37.5em = 600px
-56.25em = 900px
-75em = 1200px
-112.5em = 1800px
-*/ 
 
 /* Tablet portrait devices from 600px */ 
-@media only screen and (min-width: 37.5em) {
+@media only screen and (min-width: 600px) {
     html {
         font-size: 70%;
     }  
@@ -699,7 +672,7 @@ Media Queries are declared in em:
 }
 
 /* Tablet landscape devices from 900px */ 
-@media only screen and (min-width: 56.25em) {
+@media only screen and (min-width: 900px) {
     main {
         margin-top: 5.1rem;
     }
@@ -745,7 +718,7 @@ Media Queries are declared in em:
 }
 
 /* Desktop from 1200px */ 
-@media only screen and (min-width: 75em) {
+@media only screen and (min-width: 1200px) {
     /* 8px/16px = 50% */
     html {font-size: 80%;}  
     
@@ -780,7 +753,7 @@ Media Queries are declared in em:
 }
 
 /* Big desktop from 1800px */ 
-@media only screen and (min-width: 112.5em) {
+@media only screen and (min-width: 1800px) {
     html {font-size: 85%;}  
 
     main {
