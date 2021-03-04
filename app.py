@@ -352,9 +352,8 @@ def search():
     #  Search results
     results = \
         recipes_coll.find({'$text': {'$search': str(query)}},
-                          {'score': {'$meta': 'textScore'}}).sort('_id'
-            , pymongo.ASCENDING).skip((current_page - 1)
-            * limit_per_page).limit(limit_per_page)
+                          {'score': {'$meta': 'textScore'}}).sort('_id', pymongo.ASCENDING).skip((current_page - 1)
+                             * limit_per_page).limit(limit_per_page)
 
     # Pagination
     number_of_recipes_found = recipes_coll.find(
