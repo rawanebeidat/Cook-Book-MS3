@@ -1,5 +1,7 @@
 # Online Recipes
 
+![GitHub Logo](static/img/mockup.JPG)
+
 
 ## "Online Recipes" - Practical Python and Data-Centric Development Milestone Project.
 
