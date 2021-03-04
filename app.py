@@ -41,7 +41,7 @@ def index():
 @app.route('/all_recipes')
 def all_recipes():
     # CREDITS: the idea of pagination used below is taken and modified
-    # from the Shane Muirhead's project
+    # from the Shane Muirhead's project on dribble.
     limit_per_page = 8
     current_page = int(request.args.get('current_page', 1))
     # get total of all the recipes in db

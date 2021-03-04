@@ -139,13 +139,13 @@ nav {
 }
 
 nav .brand-logo{
-    height: 75%;
+    height: 100%;
     display: flex;
     align-items: center;
 }
 
 nav img {
-    height: 6.5rem;
+    height: 5.5rem;
 }
 
 nav ul a {
