@@ -56,7 +56,7 @@
 
                 <div class="card-content">
                     <h3>
-                        <a href="#"
+                        <a href="{{ url_for('single_recipe_details', recipe_id=recipe._id) }}"
                             class="card-title">{{ recipe.recipe_name }}
                         </a>
                     </h3>
