@@ -29,8 +29,6 @@
             <!-- Cuisine_type-->
             <div class="input-field col s12 m6 l4">
                 <i class="fas fa-globe-europe prefix"></i>
-                <!--If cuisine is not selected(as it is optional), value "None" is assigned,
-                to be "not specified" displayed on the recipe card-->
                 <select id="cuisine_type" name="cuisine_type">
                     <option value="None" selected>Select an option</option>
                     {% for cuisine in cuisine_types %}
@@ -61,8 +59,6 @@
             <!-- Diet_type-->
             <div class="input-field col s12 m6 l4">
                 <i class="fas fa-leaf prefix"></i>
-                <!--If diet_type is not selected(as it is optional), value "None" is assigned,
-                to be "not specified" displayed on the recipe card-->
                 <select id="diet_type" name="diet_type">
                     <option value="None" selected>Select an option</option>
                     {% for diet in diet_types %}

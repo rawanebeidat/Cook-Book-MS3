@@ -31,12 +31,6 @@ meals_coll = mongo.db.meals
 @app.route('/')
 @app.route("/index")
 def index():
-    '''
-    Main home page.
-    Allows users to view 4 random featured recipes
-    from the database as clickable cards, located bellow the hero image.
-    '''
-    # Generate 4 random recipes from the DB
     featured_recipes = ([recipe for recipe in recipes_coll.aggregate
                          ([{"$sample": {"size": 4}}])])
     return render_template('index.html', featured_recipes=featured_recipes,
@@ -46,12 +40,6 @@ def index():
 # All recipes display
 @app.route('/all_recipes')
 def all_recipes():
-    '''
-    READ.
-    Displays all the recipes from the database using pagination.
-    The limit is set to 8 recipes per page.
-    Also displayes the number of all recipes.
-    '''
     # CREDITS: the idea of pagination used below is taken and modified
     # from the Shane Muirhead's project
     limit_per_page = 8
@@ -70,13 +58,6 @@ def all_recipes():
 # Single Recipe details display
 @app.route('/recipe_details/<recipe_id>')
 def single_recipe_details(recipe_id):
-    '''
-    READ.
-    Displays detailed information about a selected recipe.
-    If logged id user is an author of the selected recipe,
-    there are buttons "edit" and "delete" displayed
-    giving the oportunity to manipulate the recipe.
-    '''
     # find the selected recipe in DB by its id
     selected_recipe = recipes_coll.find_one({"_id": ObjectId(recipe_id)})
     # Set the author of the recipe
@@ -90,14 +71,6 @@ def single_recipe_details(recipe_id):
 # My recipes
 @app.route('/my_recipes/<username>')
 def my_recipes(username):
-    '''
-    READ.
-    Displays the recipes created by logged in user in session.
-    If user has not created any recipes yet, there's a button "add recipe"
-    giving an opportunity to create a new recipe.
-    Pagination is in place diplaying 8 recipes per page.
-    Also displays the total number of recipes created by the user.
-    '''
     my_id = users_coll.find_one({'username': session['username']})['_id']
     my_username = users_coll.find_one({'username': session
                                        ['username']})['username']
@@ -124,13 +97,6 @@ def my_recipes(username):
 # Add recipe
 @app.route('/add_recipe')
 def add_recipe():
-    '''
-    CREATE.
-    The function calls Add_RecipeForm class from forms.py
-    to diplay the form for adding new recipe,
-    fill dropdowns with data from cuisins, diets and meals collections.
-    Only logged in users can view and fill the form
-    '''
     # prevents guest users from viewing the form
     if 'username' not in session:
         flash('You must be logged in to add a new recipe!')
@@ -149,11 +115,6 @@ def add_recipe():
 # Insert recipe
 @app.route("/insert_recipe", methods=['GET', 'POST'])
 def insert_recipe():
-    '''
-    CREATE.
-    Inserts new created recipe to the "recipes" collection in DB
-    after submission the form from the add_recipe page.
-    '''
 
     # split ingredients and directions into lists
     ingredients = request.form.get("ingredients").splitlines()
@@ -190,11 +151,6 @@ def insert_recipe():
 # Edit Recipe
 @app.route("/edit_recipe/<recipe_id>")
 def edit_recipe(recipe_id):
-    '''
-    UPDATE.
-    Renders edit_recipe page, provides the user with a form to edit task
-    with pre-populated fields.
-    '''
     # prevents guest users from viewing the form
     if 'username' not in session:
         flash('You must be logged in to edit a recipe!')
@@ -222,10 +178,6 @@ def edit_recipe(recipe_id):
 # Update Recipe in the Database
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):
-    '''
-    UPDATE.
-    Updates the selected recipe in the database after submission the form.
-    '''
     recipes = recipes_coll
 
     selected_recipe = recipes_coll.find_one({"_id": ObjectId(recipe_id)})
@@ -256,11 +208,6 @@ def update_recipe(recipe_id):
 # Delete Recipe
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
-    '''
-    DELETE.
-    Removes the selected recipe from the database.
-    Only the author of the recipe can delete the recipe.
-    '''
     # prevents guest users from viewing the modal
     if 'username' not in session:
         flash('You must be logged in to delete a recipe!')
@@ -269,7 +216,6 @@ def delete_recipe(recipe_id):
     # get the selected recipe for filling the fields
     selected_recipe = recipes_coll.find_one({"_id": ObjectId(recipe_id)})
     # allows only author of the recipe to delete it;
-    # protects againts brute-forcing
     if selected_recipe['author'] == user_in_session['_id']:
         recipes_coll.remove({"_id": ObjectId(recipe_id)})
         # find the author of the selected recipe
@@ -287,11 +233,6 @@ def delete_recipe(recipe_id):
 # Login
 @app.route("/login",  methods=['GET', 'POST'])
 def login():
-    '''
-    The login function calls LoginForm class from forms.py,
-    It checks if the entered username and passwords are valid
-    and then add user to session.
-    '''
     # Check if the user is already logged in
     if 'username' in session:
         flash('You are already logged in!')
@@ -324,12 +265,6 @@ def login():
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
-    '''
-    CREATE.
-    Creates a new account; it calls the RegisterForm class from forms.py.
-    Checks if the username is not already excist in database,
-    hashes the entered password and add a new user to session.
-    '''
     # checks if user is not already logged in
     if 'username' in session:
         flash('You are already registered!')
@@ -364,9 +299,6 @@ def register():
 # Logout
 @app.route("/logout")
 def logout():
-    '''
-    Logs user out and redirects to home
-    '''
     session.pop("username",  None)
     return redirect(url_for("index"))
 
@@ -374,11 +306,6 @@ def logout():
 # Account Settings
 @app.route("/account_settings/<username>")
 def account_settings(username):
-    '''
-    Account settings page - displays username,
-    buttons for change_username, change_password
-    and delete_account pages.
-    '''
     # prevents guest users from viewing the page
     if 'username' not in session:
         flash('You must be logged in to view that page!')
@@ -391,12 +318,6 @@ def account_settings(username):
 # Delete Account
 @app.route("/delete_account/<username>", methods=['GET', 'POST'])
 def delete_account(username):
-    '''
-    DELETE.
-    Remove user's account from the database as well as all recipes
-    created by this user. Before deletion of the account, user is asked
-    to confirm it by entering password.
-    '''
     # prevents guest users from viewing the form
     if 'username' not in session:
         flash('You must be logged in to delete an account!')
@@ -420,13 +341,6 @@ def delete_account(username):
 
 @app.route("/search")
 def search():
-    """
-    A function that finds recipes on query
-    The query is the user's input
-    Recipes are a list of user queries
-    Render user's list recipes on search.html
-    """
-
     limit_per_page = 8
     current_page = int(request.args.get('current_page', 1))
 

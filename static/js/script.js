@@ -10,11 +10,4 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
     $('.modal').modal();
 
-    //Resize button on a home page when it is hovered 
-    $("#btn-home").mouseout(function () {
-        $(this).css("transform", "scale(1)");
-    });
-    $("#btn-home").mouseover(function () {
-        $(this).css("transform", "scale(1.05)");
-    });
 });
