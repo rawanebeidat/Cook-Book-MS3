@@ -78,9 +78,6 @@ def my_recipes(username):
     my_recipes = recipes_coll.find({'author': my_id})
     # get total number of recipes created by the user
     number_of_my_rec = my_recipes.count()
-    # Pagination, displays 8 recipes per page
-    # CREDITS: the idea of pagination used below is taken and modified
-    # from the Shane Muirhead's project
     limit_per_page = 8
     current_page = int(request.args.get('current_page', 1))
     pages = range(1, int(math.ceil(number_of_my_rec / limit_per_page)) + 1)
@@ -123,7 +120,6 @@ def insert_recipe():
     author = users_coll.find_one({"username": session["username"]})["_id"]
 
     if request.method == 'POST':
-        # inser the new recipe after submission the form
         new_recipe = {
             "recipe_name": request.form.get("recipe_name").strip(),
             "description": request.form.get("recipe_description"),
@@ -138,7 +134,6 @@ def insert_recipe():
             "image": request.form.get("image")
         }
         insert_recipe_intoDB = recipes_coll.insert_one(new_recipe)
-        # updates "user recipes" list with recipe_id added in user collection
         users_coll.update_one(
             {"_id": ObjectId(author)},
             {"$push": {"user_recipes": insert_recipe_intoDB.inserted_id}})
@@ -156,12 +151,8 @@ def edit_recipe(recipe_id):
         flash('You must be logged in to edit a recipe!')
         return redirect(url_for('index'))
     user_in_session = users_coll.find_one({'username': session['username']})
-    # get the selected recipe for filling the fields
     selected_recipe = recipes_coll.find_one({"_id": ObjectId(recipe_id)})
-    # allows only author of the recipe to edit it;
-    # protects againts brute-forcing
     if selected_recipe['author'] == user_in_session['_id']:
-        # variables to fill dropdownes with data from collections
         diet_types = diets_coll.find()
         meal_types = meals_coll.find()
         cuisine_types = cuisines_coll.find()
@@ -181,13 +172,10 @@ def update_recipe(recipe_id):
     recipes = recipes_coll
 
     selected_recipe = recipes_coll.find_one({"_id": ObjectId(recipe_id)})
-    # identifies the user in session to assign an author for edited recipe
     author = selected_recipe.get("author")
-    # split ingredients and directions into lists
     ingredients = request.form.get("ingredients").splitlines()
     directions = request.form.get("directions").splitlines()
     if request.method == "POST":
-        # updates the selected recipe with data gotten from the form
         recipes.update({"_id": ObjectId(recipe_id)}, {
             "recipe_name": request.form.get("recipe_name"),
             "description": request.form.get("recipe_description"),
@@ -213,12 +201,10 @@ def delete_recipe(recipe_id):
         flash('You must be logged in to delete a recipe!')
         return redirect(url_for('index'))
     user_in_session = users_coll.find_one({'username': session['username']})
-    # get the selected recipe for filling the fields
     selected_recipe = recipes_coll.find_one({"_id": ObjectId(recipe_id)})
     # allows only author of the recipe to delete it;
     if selected_recipe['author'] == user_in_session['_id']:
         recipes_coll.remove({"_id": ObjectId(recipe_id)})
-        # find the author of the selected recipe
         author = users_coll.find_one({'username': session['username']})['_id']
 
         users_coll.update_one({"_id": ObjectId(author)},
@@ -239,7 +225,6 @@ def login():
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        # Variable for users collection
         users = users_coll
         registered_user = users.find_one({'username':
                                           request.form['username']})
@@ -248,7 +233,6 @@ def login():
             # Check if password in the form is equal to the password in the DB
             if check_password_hash(registered_user['password'],
                                    request.form['password']):
-                # Add user to session if passwords match
                 session['username'] = request.form['username']
                 flash('You have been successfully logged in!')
                 return redirect(url_for('index'))
@@ -272,9 +256,7 @@ def register():
 
     form = RegisterForm()
     if form.validate_on_submit():
-        # variable for users collection
         users = users_coll
-        # checks if the username is unique
         registered_user = users_coll.find_one({'username':
                                                request.form['username']})
         if registered_user:
@@ -345,8 +327,6 @@ def search():
     current_page = int(request.args.get('current_page', 1))
 
     query = request.args.get('query')
-
-    #  create the index
     recipes_coll.create_index([("$**", 'text')])
 
     #  Search results

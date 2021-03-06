@@ -1,6 +1,6 @@
 # Online Recipes
 
-![GitHub Logo](static/img/mockup.JPG)
+![website mockup](static/img/mockup.JPG)
 
 
 ## "Online Recipes" - Practical Python and Data-Centric Development Milestone Project.
@@ -33,25 +33,24 @@ User would have an opportunity to "like" other recipes, saving them in "my favou
 
 # Technologies Used
 - GitPod - an online IDE for developing this project.
-- Git - for version control.
 - GitHub - for remotely storing project's code.
 - PIP - for installation of necessary tools.
 ## Front-End
 - HTML - to build the foundation of the project.
 - CSS - to create custom styles.
 ## Back-End
-- Python 3.8.2 - back-end programming language used in this project.
-- Flask 1.1.2 - microframework for building and rendering pages.
+- Python - back-end programming language used in this project.
+- Flask  - microframework for building and rendering pages.
 - MongoDB Atlas - NoSQL database for storing back-end data.
 - PyMongo - for Python to get access the MongoDB database.
-- WTForms 2.2.1 - for creating forms with validation.
-- Werkzeug 0.16.1 - to generate and verify password hashing.
-- Jinja 2.10.1 - templating language for Python, to display back-end data in HTML.
+- WTForms  - for creating forms with validation.
+- Werkzeug  - to generate and verify password hashing.
+- Jinja  - templating language for Python, to display back-end data in HTML.
 - Heroku - to host the project.
 ## Libraries
-- Materialize 1.0.0 - main responsive modern front-end framework used for grid and responsivesness.
+- Materialize  - main responsive modern front-end framework used for grid and responsivesness.
 - FontAwesome - to provide icons used across the project.
-- JQuery 3.5.0 - to simplify DOM manipulation and to initialize Materialize functions.
+- JQuery - to simplify DOM manipulation and to initialize Materialize functions.
 # Testing
 ## Manual Testing
 
@@ -100,8 +99,8 @@ To be able to run this project, the following tools have to be installed:
 ## Directions
 
 1. You can clone this repository directly into the editor of your choice by pasting the following command into the terminal:
-git clone https://github.com/cook-book-MS3.
-2. In the terminal window change directory (CD) to the correct file location (directory that you have just created).
+      git clone https://github.com/cook-book-MS3.
+2. In the terminal window change directory (CD) to the correct file location.
 3. Set up environment variables:
      - Create .env file in the root directory.
      - on the top of the file add import os to set the environment variables in the operating system.
@@ -164,14 +163,14 @@ The project images are taken from the following sources:
 - Homepage background  : Unsplash.
 - Forms and search background image : Pixels.
 - Favicon : Clipart-Library.
-- Logo : Canvas.
+- Logo : designevo.
 - Recipe placeholder is taken from free available Google images.
 
 ## Code
 - Stackoverflow: how-to-validate-select-option-for-a-materialize-dropdown:
-stackoverflow.com/questions/34248898/.
+     stackoverflow.com/questions/34248898/.
 - For building the Register, Login, as well as for better understanding session , I used the following tutorials:
-https://www.youtube.com/watch?v=eu0tg4vgFr4&list=PLXmMXHVSvS-C_T5JWEDWIc9yEM3Hj52-1.
+     https://www.youtube.com/watch?v=eu0tg4vgFr4&list=PLXmMXHVSvS-C_T5JWEDWIc9yEM3Hj52-1.
 - For UI & UX design concept I took inspiration from different projects found GitHub submission.
 
 ## Acknowledgements:
