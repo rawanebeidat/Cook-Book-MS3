@@ -99,7 +99,7 @@ To be able to run this project, the following tools have to be installed:
 ## Directions
 
 1. You can clone this repository directly into the editor of your choice by pasting the following command into the terminal:
-      git clone https://github.com/cook-book-MS3.
+      git clone https://github.com/rawanebeidat/Cook-Book-MS3.
 2. In the terminal window change directory (CD) to the correct file location.
 3. Set up environment variables:
      - Create .env file in the root directory.
@@ -168,7 +168,7 @@ The project images are taken from the following sources:
 
 ## Code
 - Stackoverflow: how-to-validate-select-option-for-a-materialize-dropdown:
-     stackoverflow.com/questions/34248898/.
+     https://stackoverflow.com/questions/34248898/how-to-validate-select-option-for-a-materialize-dropdown.
 - For building the Register, Login, as well as for better understanding session , I used the following tutorials:
      https://www.youtube.com/watch?v=eu0tg4vgFr4&list=PLXmMXHVSvS-C_T5JWEDWIc9yEM3Hj52-1.
 - For UI & UX design concept I took inspiration from different projects found GitHub submission.
